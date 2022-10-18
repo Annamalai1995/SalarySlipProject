@@ -1,5 +1,6 @@
 package EmployeeDetails.SalarySlipDetails;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,6 +16,7 @@ public interface PaySlipDetailsRepositary extends JpaRepository<PaySlipDetail, I
 			// findById	>> single data by primary key
 			// findByAmount	>> single data by amount
 		
-		public List<PaySlipDetail> findAllByEmpDetails(EmpDetails emp);
+		public List<PaySlipDetail> findAllByDate(Date dd);
+		
 
 }

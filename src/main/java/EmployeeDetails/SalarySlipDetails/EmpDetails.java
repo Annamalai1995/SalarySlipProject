@@ -16,6 +16,8 @@ import javax.persistence.OneToMany;
 
 import org.springframework.lang.Nullable;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -38,6 +40,7 @@ public class EmpDetails
 	@OneToMany(fetch=FetchType.LAZY,cascade = CascadeType.ALL)
 	@JoinTable(name="AllRecords",joinColumns = @JoinColumn(name="EmployeeId"),inverseJoinColumns = @JoinColumn(name="payslipId"))
 	@Nullable
+	@JsonBackReference
 	private Collection<PaySlipDetail> mypayslip=new ArrayList<PaySlipDetail>();
 	//collection<> obj=new Arraylist<>();
 	

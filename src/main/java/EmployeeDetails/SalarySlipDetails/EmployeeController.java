@@ -53,8 +53,9 @@ public class EmployeeController
 		month=basic-(month*paydetails.getPaysilpTds()/100) ;
 		paydetails.setPayslipTakeHome(month);
 		tmp.getMypayslip().add(paydetails);
+		//service.create(tmp);
+		paydetails.setEmpDetails(tmp);//
 		Pserv.newoneps(paydetails);
-		service.create(tmp);
 		return paydetails;	
 	}
 	//updatingsalary
@@ -66,9 +67,22 @@ public class EmployeeController
 	}
 	
 	@GetMapping("/checking/{one}/{two}")
-	public List<EmpDetails> gettingTwo(@PathVariable("one")double one,@PathVariable("two")String name)
+	public List<EmpDetails> gettingTwo( @PathVariable("one")double one,@PathVariable("two")String name)
 	{
 		return service.fetchingAnSalaryName(one, name);
 	}
 	
+	@GetMapping("/fetch")
+	public List<PaySlipDetail> getByEmps(@RequestBody EmpDetails emp)
+	{
+		return Pserv.getbyEmpDetails(emp);
+	}
+	@GetMapping("/dating/{date1}/{date2}")
+	public List<PaySlipDetail> gettingdates(@PathVariable("date1")String date1,@PathVariable("date2")String date2) throws ParseException
+	{
+		Date dt1=new SimpleDateFormat("YYYY-MM-DD").parse(date1);
+		Date dt2=new SimpleDateFormat("YYYY-MM-DD").parse(date2);
+		System.out.println(date1+" "+date2);
+		return Pserv.getBetweenDates(dt1, dt2);
+	}
 }

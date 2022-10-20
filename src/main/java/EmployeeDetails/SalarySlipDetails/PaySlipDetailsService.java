@@ -16,14 +16,18 @@ public class PaySlipDetailsService {
 		return prepo.save(pay);
 	}
 	
-//	public List<PaySlipDetail> getbyEmpDetails(EmpDetails emp)
-//	{
-//		return prepo.findAllByEmpDetails(emp);
-//	}
-	
-	public List<PaySlipDetail> makeReadByDate(Date dd)
+	public List<PaySlipDetail> getbyEmpDetails(EmpDetails emp)
 	{
-		return prepo.findAllByDate(dd);
+		return prepo.findAllByEmpDetails(emp);
 	}
+//	
+//	public List<PaySlipDetail> makeReadByDate(Date dd)
+//	{
+//		return prepo.findAllByDate(dd);
+//	}
+	 public List<PaySlipDetail> getBetweenDates(Date date1,Date date2)
+	 {
+		 return prepo.findAllByDateBetween(date1, date2);
+	 }
 
 }

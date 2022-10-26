@@ -37,4 +37,9 @@ public class EmpDetailsService
 	{
 		return repo.gettingAnSalaryAndName(salary1, name1);
 	}
+	
+	public List<EmpDetails> list()
+	{
+		return repo.findAll();
+	}
 }

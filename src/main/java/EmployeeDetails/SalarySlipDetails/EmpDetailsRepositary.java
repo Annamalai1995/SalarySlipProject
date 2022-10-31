@@ -12,6 +12,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EmpDetailsRepositary extends JpaRepository<EmpDetails, Integer>
 {
+	
+	public EmpDetails findByUsername(String Username);
 	//update `EmpDetails` set empsalary=empsalary+(empsalary*20/100) where empname
 	@Transactional
 	@Modifying

@@ -15,6 +15,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 
 import org.springframework.lang.Nullable;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -26,12 +28,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor//super class
 @AllArgsConstructor
 @Entity
-public class EmpDetails 
+public class EmpDetails implements UserDetails
 {
 	@Id @GeneratedValue (strategy = GenerationType.IDENTITY)
 	private int empId;
 	private String empName;
-	@Column(unique = true)
+	//@Column(unique = true)
 	private String username;
 	private String password;
 	private String empDesignation;
@@ -43,6 +45,41 @@ public class EmpDetails
 	@JsonBackReference
 	private Collection<PaySlipDetail> mypayslip=new ArrayList<PaySlipDetail>();
 	//collection<> obj=new Arraylist<>();
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public String getPassword()
+	{
+		return password;
+	}
+	
+	public String getUsername()
+	{
+		return username;
+	}
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return true;
+	}
 	
 
 }

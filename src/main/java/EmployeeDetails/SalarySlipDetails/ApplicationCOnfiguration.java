@@ -45,7 +45,7 @@ public class ApplicationCOnfiguration
 		AuthenticationManagerBuilder builder=hp.getSharedObject(AuthenticationManagerBuilder.class);
 		builder.userDetailsService(serv).passwordEncoder(encrpting());
 		manager=builder.build();
-		
+		hp.authenticationManager(manager);
 		return hp.build();	
 	}
 

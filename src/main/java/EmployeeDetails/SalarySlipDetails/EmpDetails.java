@@ -24,7 +24,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data//getter setter,tostring
+@Data//getter setter,destroying
 @NoArgsConstructor//super class
 @AllArgsConstructor
 @Entity

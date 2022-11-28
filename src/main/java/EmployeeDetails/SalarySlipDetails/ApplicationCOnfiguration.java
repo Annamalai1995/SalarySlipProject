@@ -41,6 +41,7 @@ public class ApplicationCOnfiguration
 		hp.httpBasic();
 		hp.formLogin();
 		hp.cors();
+		hp.csrf().disable();
 		
 		AuthenticationManagerBuilder builder=hp.getSharedObject(AuthenticationManagerBuilder.class);
 		builder.userDetailsService(serv).passwordEncoder(encrpting());

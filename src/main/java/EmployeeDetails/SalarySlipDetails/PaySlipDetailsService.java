@@ -10,6 +10,10 @@ import org.springframework.stereotype.Service;
 public class PaySlipDetailsService {
 	@Autowired
 	PaySlipDetailsRepositary prepo;
+
+	public List<PaySlipDetail> impleDateAndEmp(int emp,String d1, String d2){
+		return prepo.findAllByDateRanges(emp,d1,d2);
+	}
 	
 	public PaySlipDetail newoneps(PaySlipDetail pay)
 	{

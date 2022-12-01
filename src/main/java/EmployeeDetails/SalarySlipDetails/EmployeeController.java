@@ -97,6 +97,16 @@ public class EmployeeController
 		//System.out.println(Pserv.getbyEmpDetails(emp));
 		return Pserv.getbyEmpDetails(purpose(user));
 	}
+	@GetMapping("/datem/{user}/{date1}/{date2}")
+	public List<PaySlipDetail> gettingdatesAndEmp(@PathVariable("user") String user,@PathVariable("date1")String date1,@PathVariable("date2")String date2) throws ParseException
+	{
+		//Date dt1=new SimpleDateFormat("YYYY-MM-DD").parse(date1);
+		//Date dt2=new SimpleDateFormat("YYYY-MM-DD").parse(date2);
+		EmpDetails e=purpose(user);
+		System.out.println(date1+" "+date2+" "+e.getEmpId());
+		System.out.println(Pserv.impleDateAndEmp(e.getEmpId(),date1,date2).size());
+		return Pserv.impleDateAndEmp(e.getEmpId(),date1,date2);
+	}
 	@GetMapping("/dating/{date1}/{date2}")
 	public List<PaySlipDetail> gettingdates(@PathVariable("date1")String date1,@PathVariable("date2")String date2) throws ParseException
 	{

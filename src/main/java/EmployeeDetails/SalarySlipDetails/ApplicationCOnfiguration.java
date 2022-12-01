@@ -37,7 +37,7 @@ public class ApplicationCOnfiguration
 	{
 		//hp.authorizeRequests().anyRequest().permitAll();
 		//hp.authorizeRequests().anyRequest().authenticated();
-		hp.authorizeRequests().antMatchers("/maddy/**").authenticated();
+		hp.authorizeRequests().antMatchers("/maddy/*").authenticated();
 		hp.httpBasic();
 		hp.formLogin();
 		hp.cors();

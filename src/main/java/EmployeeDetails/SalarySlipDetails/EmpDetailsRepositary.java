@@ -17,7 +17,7 @@ public interface EmpDetailsRepositary extends JpaRepository<EmpDetails, Integer>
 	//update `EmpDetails` set empsalary=empsalary+(empsalary*20/100) where empname
 	@Transactional
 	@Modifying
-	@Query("update from  EmpDetails set empSalary=empSalary+(empSalary*20/100) where empName=:emp")
+	@Query("update EmpDetails set empSalary=empSalary+(empSalary*10/100) where username=:emp")
 	public void UpdatebySalary(String emp);
 	
 	@Query("from EmpDetails where empSalary>=:salary or empName=:name")

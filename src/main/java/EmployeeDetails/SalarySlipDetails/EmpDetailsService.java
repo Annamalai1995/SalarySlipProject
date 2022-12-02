@@ -21,7 +21,7 @@ public class EmpDetailsService implements UserDetailsService
 	
 	public String erasing(int id)
 	{
-		EmpDetails emp=repo.findById(id).orElse(new EmpDetails() );
+		EmpDetails emp=repo.findById(id).orElse(new EmpDetails());
 		String tmp=emp.getEmpName()+"Has deleted Successfully";
 		repo.delete(emp);
 		return tmp;

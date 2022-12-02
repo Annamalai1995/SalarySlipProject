@@ -11,6 +11,10 @@ public class PaySlipDetailsService {
 	@Autowired
 	PaySlipDetailsRepositary prepo;
 
+	public void impleDeleteByCondition(int id){
+		prepo.deleteByEmpId(id);
+	}
+
 	public List<PaySlipDetail> impleDateAndEmp(int emp,String d1, String d2){
 		return prepo.findAllByDateRanges(emp,d1,d2);
 	}

@@ -4,9 +4,11 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.NamedNativeQuery;
 
@@ -30,7 +32,10 @@ public interface PaySlipDetailsRepositary extends JpaRepository<PaySlipDetail, I
 		public List<PaySlipDetail> findAllByDateRanges(int emp,String d1,String d2);
 		//public List<PaySlipDetail> findAllByDateRanges(@Param("emp") int emp, @Param("d1") String d1,@Param("d2") String d2);
 
-	
+		@Transactional
+		@Modifying
+		@Query(value="delete from pay_slip_detail where emp_id=?1",nativeQuery = true)
+		public void deleteByEmpId(int id);
 		
 		public List<PaySlipDetail> findAllByEmpDetails(EmpDetails emp);
  

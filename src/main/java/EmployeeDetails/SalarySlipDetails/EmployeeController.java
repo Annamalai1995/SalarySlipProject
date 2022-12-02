@@ -49,14 +49,18 @@ public class EmployeeController
 	@PutMapping("/update")
 	public String  update(@RequestBody EmpDetails emp)
 	{
+		String tmp=encoder.encode(emp.getPassword());
+		emp.setPassword(tmp);
 		EmpDetails obj=service.create(emp);
 		return obj.getEmpName()+"has been updated";
 	}
 	
-	@DeleteMapping("/Delete/{key}")
-	public String erasing(@PathVariable("key")int key)
+	@DeleteMapping("/Delete/{user}")
+	public String erasing(@PathVariable("user")String user)
 	{
-		return service.erasing(key);
+		EmpDetails e = purpose(user);
+		Pserv.impleDeleteByCondition(e.getEmpId());
+		return service.erasing(e.getEmpId());
 	}
 	
 	@PostMapping ("/createpayslip/{user}")
@@ -78,9 +82,16 @@ public class EmployeeController
 	//updatingsalary
 	
 	@PutMapping("/updating/{value}")
-	public void updatingansalary(@PathVariable("value")String value )
+	public String updatingansalary(@PathVariable("value")String value )
 	{
-		service.updatingSalary(value);
+		EmpDetails emp=purpose(value);
+		if(emp.getEmpSalary()<=400000) {
+			service.updatingSalary(value);
+			return emp.getEmpName()+" got appraisal";
+		}
+		else{
+			return emp.getEmpName()+" not eligible to get appraisal";
+		}
 	}
 	
 	@GetMapping("/checking/{one}/{two}")

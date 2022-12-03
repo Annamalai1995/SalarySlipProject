@@ -66,7 +66,6 @@ public class EmployeeController
 	@PostMapping ("/createpayslip/{user}")
 	public PaySlipDetail callnewone(@PathVariable("user") String user, @RequestBody PaySlipDetail paydetails)
 	{
-
 			EmpDetails tmp = purpose(user);//service.GettingbyExactNumber(paydetails.getEmpDetails().getEmpId());
 			double month = tmp.getEmpSalary() / 12;
 			double basic = month - (month * (paydetails.getPayslipAllowance()) / 100);
